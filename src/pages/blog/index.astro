@@ -1,0 +1,37 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { getSupabase } from '~/lib/supabase.js';
+
+const supabase = getSupabase();
+let posts = [];
+let errorMessage = '';
+
+if (!supabase) {
+  errorMessage = 'Supabase is not configured. Set valid PUBLIC_SUPABASE_URL and PUBLIC_SUPABASE_ANON_KEY values in your .env file.';
+} else {
+  const { data, error } = await supabase.from("posts").select("*").order("created_at", { ascending: false });
+  if (error) {
+    errorMessage = 'Error loading posts';
+  } else {
+    posts = data || [];
+  }
+}
+---
+
+<BaseLayout title="Blog / Lessons">
+  <main style="padding: 20px">
+    <h1>Blog / Lessons</h1>
+    <p>Browse Islamic lessons, reflections, and practical learning resources from our portal.</p>
+
+    {errorMessage && <p>{errorMessage}</p>}
+
+    {!errorMessage && posts.length === 0 && <p>No posts yet</p>}
+
+    {posts.map((post) => (
+      <div style="margin-bottom: 20px">
+        <h3>{post.title}</h3>
+        <p>{post.content}</p>
+      </div>
+    ))}
+  </main>
+</BaseLayout>

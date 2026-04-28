@@ -3,3 +3,5 @@ create table public.posts (
   title text not null,
   content text not null
 );
+src/layouts/BaseLayout.astro---
+http://localhost:4321/

@@ -1,0 +1,13 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Masail from '~/components/Masail.jsx';
+---
+
+<BaseLayout title="Hajj & Fiqh Masā’il">
+  <main style="padding: 20px">
+    <h1>Hajj & Fiqh Masā’il</h1>
+    <p>Search common questions and answers about Hajj, worship, and Islamic rulings.</p>
+  </main>
+
+  <Masail client:only />
+</BaseLayout>

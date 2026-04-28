@@ -1,0 +1,57 @@
+---
+const { title = "Islamic Learning Hub" } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        max-width: 900px;
+        margin: auto;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      h1,
+      h2 {
+        color: #1f2937;
+      }
+
+      a {
+        color: #065f46;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        margin-top: 20px;
+      }
+
+      .grid a {
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <nav style="display: flex; gap: 16px; padding: 16px; background: #f8f8f8; border-bottom: 1px solid #ddd;">
+      <a href="/" style="text-decoration: none; color: inherit;">Home</a>
+      <a href="/blog" style="text-decoration: none; color: inherit;">Lessons</a>
+      <a href="/courses/hajj" style="text-decoration: none; color: inherit;">Hajj Course</a>
+      <a href="/masail" style="text-decoration: none; color: inherit;">Masā’il</a>
+    </nav>
+    <slot />
+  </body>
+</html>
